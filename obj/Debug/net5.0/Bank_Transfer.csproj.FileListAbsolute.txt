@@ -1,0 +1,16 @@
+C:\Workspace\CSharp\Bank_Transfer\bin\Debug\net5.0\Bank_Transfer.exe
+C:\Workspace\CSharp\Bank_Transfer\bin\Debug\net5.0\Bank_Transfer.deps.json
+C:\Workspace\CSharp\Bank_Transfer\bin\Debug\net5.0\Bank_Transfer.runtimeconfig.json
+C:\Workspace\CSharp\Bank_Transfer\bin\Debug\net5.0\Bank_Transfer.runtimeconfig.dev.json
+C:\Workspace\CSharp\Bank_Transfer\bin\Debug\net5.0\Bank_Transfer.dll
+C:\Workspace\CSharp\Bank_Transfer\bin\Debug\net5.0\ref\Bank_Transfer.dll
+C:\Workspace\CSharp\Bank_Transfer\bin\Debug\net5.0\Bank_Transfer.pdb
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\Bank_Transfer.csprojAssemblyReference.cache
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\Bank_Transfer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\Bank_Transfer.AssemblyInfoInputs.cache
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\Bank_Transfer.AssemblyInfo.cs
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\Bank_Transfer.csproj.CoreCompileInputs.cache
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\Bank_Transfer.dll
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\ref\Bank_Transfer.dll
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\Bank_Transfer.pdb
+C:\Workspace\CSharp\Bank_Transfer\obj\Debug\net5.0\Bank_Transfer.genruntimeconfig.cache
