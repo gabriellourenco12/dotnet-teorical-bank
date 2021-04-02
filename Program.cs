@@ -56,10 +56,15 @@ namespace Bank_Transfer
             Console.WriteLine("--- SAQUE ---");
             Console.WriteLine();
             int indexConta = PegarConta();
+            double valorSaque = 0;
+            bool b = false;
+            do
+            {
+                Console.Write("DIGITE O VALOR A SER SACADO: ");
+                b = double.TryParse(Console.ReadLine(), out valorSaque);
+                if (b == false) Console.WriteLine("VALOR DEVE SER UM NÚMERO!");
+            } while (b == false);
             
-            Console.Write("DIGITE O VALOR A SER SACADO: ");
-            double valorSaque = double.Parse(Console.ReadLine());
-
             listContas[indexConta].Sacar(valorSaque);
         }
         private static void Depositar()
@@ -68,10 +73,14 @@ namespace Bank_Transfer
             Console.WriteLine("--- DEPÓSITO ---");
             Console.WriteLine();
             int indexConta = PegarConta();
-            
-            Console.Write("DIGITE O VALOR A SER DEPOSITADO: ");
-            double valorDeposito = double.Parse(Console.ReadLine());
-
+            double valorDeposito = 0;
+            bool b = false;
+            do
+            {
+                Console.Write("DIGITE O VALOR A SER DEPOSITADO: ");
+                b = double.TryParse(Console.ReadLine(), out valorDeposito);
+                if (b == false) Console.WriteLine("VALOR DEVE SER UM NÚMERO!");
+            } while (b == false);
             listContas[indexConta].Depositar(valorDeposito);
         }
         private static void Transferir()
@@ -83,9 +92,14 @@ namespace Bank_Transfer
             Console.WriteLine("\nCONTA DE DESTINO");
             int indexDestino = PegarConta();
 
-            Console.Write("DIGITE O VALOR A SER TRANSFERIDO: ");
-            double valorTransferencia = double.Parse(Console.ReadLine());
-            
+            double valorTransferencia = 0;
+            bool b = false;
+            do
+            {
+                Console.Write("DIGITE O VALOR A SER TRANSFERIDO: ");
+                b = double.TryParse(Console.ReadLine(), out valorTransferencia); 
+                if (b == false) Console.WriteLine("VALOR DEVE SER UM NÚMERO!");   
+            } while (b == false);
             listContas[indexOrigem].Transferir(valorTransferencia, listContas[indexDestino]);
         }
         private static int PegarConta()
@@ -139,16 +153,27 @@ namespace Bank_Transfer
             Console.WriteLine("--- INSERIR NOVA CONTA ---");
             Console.WriteLine();
             Console.Write("DIGITE 1 PARA CONTA FÍSICA OU 2 PARA CONTA JURÍDICA: ");
-            int IN_tipoConta = int.Parse(Console.ReadLine());
-
+            int IN_tipoConta = PegarTipoConta();
+            double IN_saldo = 0, IN_credito = 0;
+            bool b = false;
             Console.Write("DIGITE O NOME DO CLIENTE: ");
             string IN_nome = Console.ReadLine();
             
-            Console.Write("DIGITE O SALDO INICIAL: ");
-            double IN_saldo = double.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write("DIGITE O SALDO INICIAL: ");
+                b = double.TryParse(Console.ReadLine(), out IN_saldo);
+                if (b == false) Console.WriteLine("VALOR DEVE SER UM NÚMERO!");
+            } while (b == false);
+            
 
-            Console.Write("DIGITE O CRÉDITO: ");
-            double IN_credito = double.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write("DIGITE O CRÉDITO: ");
+                b = double.TryParse(Console.ReadLine(), out IN_credito);   
+                if (b == false) Console.WriteLine("VALOR DEVE SER UM NÚMERO!");
+            } while (b == false);
+            
             int numConta = id_Conta(id,randomList);
             Console.WriteLine("NÚMERO DA CONTA SERÁ: {0}",numConta);
             Conta novaConta = new Conta(tipoConta: (TipoConta)IN_tipoConta,
@@ -160,6 +185,27 @@ namespace Bank_Transfer
             listContas.Add(novaConta);
             Console.ReadKey();
             Console.Clear();
+        }
+
+        private static int PegarTipoConta()
+        {
+            bool b = false;
+            int IN_tipoConta = 0;
+            do
+            {
+                Console.Write("DIGITE 1 PARA CONTA FÍSICA OU 2 PARA CONTA JURÍDICA: ");
+                bool sucesso = Int32.TryParse(Console.ReadLine(),out IN_tipoConta);
+                if (sucesso && (IN_tipoConta == 1 || IN_tipoConta == 2))
+                {
+                    b = true;
+                }
+                else
+                {
+                    Console.WriteLine("\nTIPO DE CONTA INEXISTENTE!");
+                    Console.WriteLine("TENTE NOVAMENTE\n"); 
+                }
+            } while (b == false);
+            return IN_tipoConta;
         }
         private static int id_Conta(Random id, List<int> randomList)
         {
