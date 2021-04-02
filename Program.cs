@@ -54,8 +54,7 @@ namespace Bank_Transfer
         {
             Console.Clear();
             Console.WriteLine("--- SAQUE ---");
-            Console.Write("\nDIGITE O NÚMERO DA CONTA: ");
-            int indexConta = int.Parse(Console.ReadLine());
+            int indexConta = PegarConta();
             
             Console.Write("DIGITE O VALOR A SER SACADO: ");
             double valorSaque = double.Parse(Console.ReadLine());
@@ -66,8 +65,7 @@ namespace Bank_Transfer
         {
             Console.Clear();
             Console.WriteLine("--- DEPÓSITO ---");
-            Console.Write("\nDIGITE O NÚMERO DA CONTA: ");
-            int indexConta = int.Parse(Console.ReadLine());
+            int indexConta = PegarConta();
             
             Console.Write("DIGITE O VALOR A SER DEPOSITADO: ");
             double valorDeposito = double.Parse(Console.ReadLine());
@@ -78,15 +76,38 @@ namespace Bank_Transfer
         {
             Console.Clear();
             Console.WriteLine("--- TRANSFERÊNCIA ---");
-            Console.Write("\nDIGITE O NÚMERO DA CONTA DE ORIGEM: ");
-            int indexOrigem = int.Parse(Console.ReadLine());
-            Console.Write("DIGITE O NÚMERO DA CONTA DE DESTINO: ");
-            int indexDestino = int.Parse(Console.ReadLine());
+            Console.WriteLine("CONTA DE ORIGEM");
+            int indexOrigem = PegarConta();
+            Console.WriteLine("CONTA DE DESTINO");
+            int indexDestino = PegarConta();
 
             Console.Write("DIGITE O VALOR A SER TRANSFERIDO: ");
             double valorTransferencia = double.Parse(Console.ReadLine());
             
             listContas[indexOrigem].Transferir(valorTransferencia, listContas[indexDestino]);
+        }
+        private static int PegarConta()
+        {
+            int indexConta = 0;
+            bool b = false;
+            do
+            {
+                Console.Write("\nDIGITE O NÚMERO DA CONTA: ");
+                indexConta = int.Parse(Console.ReadLine());
+                if (randomList.Contains(indexConta))
+                {
+                    b = true;
+                    indexConta = randomList.IndexOf(indexConta);
+                }
+                else
+                {
+                    Console.WriteLine("CONTA INEXISTENTE!");
+                    Console.WriteLine("PRESSIONE UMA TECLA PARA VISUALIZAR A LISTA DE CONTAS");
+                    Console.ReadKey();
+                    ListarContas();                    
+                }
+            } while (b == false); 
+            return indexConta;  
         }
         private static void ListarContas()
         {
@@ -127,7 +148,7 @@ namespace Bank_Transfer
             Console.Write("DIGITE O CRÉDITO: ");
             double IN_credito = double.Parse(Console.ReadLine());
             int numConta = id_Conta(id,randomList);
-            Console.Write("NÚMERO DA CONTA SERÁ: {0}",numConta);
+            Console.WriteLine("NÚMERO DA CONTA SERÁ: {0}",numConta);
             Conta novaConta = new Conta(tipoConta: (TipoConta)IN_tipoConta,
                                         idconta: numConta,
                                         nome: IN_nome,
